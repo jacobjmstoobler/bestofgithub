@@ -19,14 +19,14 @@ const Chart = ({ type, xCategories, titleText, series, graphType, yAxisText }) =
       formatter: function () {
         if (graphType === "contributors") {
           return (
-            "<b>Changes:" +
+            "<b>Week:"+ this.x + "</b><br><b>Changes:" +
             this.y +
             "</b><br><b>Contributor:" +
             this.series.name +
             "</b>"
           );
         } else {
-          return "<br><b>Changes:" + this.y+"</b>";
+          return "<b>Week:" + this.x + "<br><b>Changes:" + this.y+"</b>";
         }
       },
     },
