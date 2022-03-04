@@ -203,7 +203,7 @@ const Repo = ({
               </Box>
               <Box>
                 <Typography color="primary">
-                  Submitted {moment(created_at).fromNow()} By {owner}
+                  Last published {moment(created_at).fromNow()} By {owner}
                 </Typography>
               </Box>
             </Box>
