@@ -118,7 +118,7 @@ export const reposSlice = createSlice({
           userData.name = user.author.login
           userData.data = []
           user.weeks.forEach(weekdata=>{
-            userData.data.push(weekdata.d,weekdata.c)
+            userData.data.push(weekdata.c)
           })
           graphData.push(userData)
       });

@@ -13,7 +13,6 @@ import RepoList from "../../Components/RepoList";
 const pageLimt = 30;
 
 export default function Dashboard() {
-  
   const repos = useSelector((state) => state.repos.repos);
 
   const setStateReducer = (state, newState) => ({ ...state, ...newState });
@@ -23,11 +22,11 @@ export default function Dashboard() {
   });
   const dispatch = useDispatch();
   useEffect(() => {
-    let query = `page=${state.page}&per_page=${pageLimt}&sort=stars&order=desc`
+    let query = `page=${state.page}&per_page=${pageLimt}&sort=stars&order=desc`;
 
     dispatch(
       getReposFetch({
-        query:query
+        query: query,
       })
     );
     return () => {};
@@ -58,10 +57,10 @@ export default function Dashboard() {
       default:
         break;
     }
-    let query = `created:>${filter}&page=${state.page}&per_page=${pageLimt}&sort=stars&order=desc`
+    let query = `created:>${filter}&page=${state.page}&per_page=${pageLimt}&sort=stars&order=desc`;
     dispatch(
       getReposFilterFetch({
-         query:query
+        query: query,
       })
     );
   };

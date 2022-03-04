@@ -13,7 +13,7 @@ import Link from "@mui/material/Link";
 
 import { getRepoDetails, getRepoActivities } from "./reposState";
 
-import FrequencyGraph from "../../Components/Charts/Chart"
+import FrequencyGraph from "../../Components/Charts/Chart";
 
 export default function RepoDetails() {
   const params = useParams();
@@ -22,7 +22,7 @@ export default function RepoDetails() {
 
   const dispatch = useDispatch();
   const { owner, repo } = params;
-  const initializePage=async()=>{
+  const initializePage = async () => {
     await Promise.all([
       new Promise(async (resolve, reject) => {
         dispatch(
@@ -31,7 +31,7 @@ export default function RepoDetails() {
             repo: repo,
           })
         );
-        resolve(true)
+        resolve(true);
       }),
       new Promise(async (resolve, reject) => {
         dispatch(
@@ -40,12 +40,12 @@ export default function RepoDetails() {
             repo: repo,
           })
         );
-        resolve(true)
-      })
-    ])
-  }
+        resolve(true);
+      }),
+    ]);
+  };
   useEffect(() => {
-    initializePage()
+    initializePage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [owner, repo]);
 
@@ -102,7 +102,8 @@ export default function RepoDetails() {
                   variant="outlined"
                 />
                 <Typography color="primary" inline>
-                  Submitted {moment(repoDetails && repoDetails.created_at).fromNow()} By{" "}
+                  Submitted{" "}
+                  {moment(repoDetails && repoDetails.created_at).fromNow()} By{" "}
                   {repoDetails && repoDetails.owner.login}
                 </Typography>
               </Grid>
@@ -111,16 +112,19 @@ export default function RepoDetails() {
         </Grid>
       </Paper>
       <Paper>
-        {repoFrequency && repoFrequency.hasOwnProperty("addition") && repoFrequency.hasOwnProperty("deletion") ?
+        {repoFrequency &&
+        repoFrequency.hasOwnProperty("addition") &&
+        repoFrequency.hasOwnProperty("deletion") ? (
           <FrequencyGraph
-             type="line"
-             titleText="Additions and Deletions"
-             xCategories={repoFrequency.xCategories}
-             series = {[
-                repoFrequency && repoFrequency.addition,
-                repoFrequency && repoFrequency.deletion
-             ]}
-          /> :null}  
+            type="line"
+            titleText="Additions and Deletions"
+            xCategories={repoFrequency.xCategories}
+            series={[
+              repoFrequency && repoFrequency.addition,
+              repoFrequency && repoFrequency.deletion,
+            ]}
+          />
+        ) : null}
       </Paper>
     </Container>
   );

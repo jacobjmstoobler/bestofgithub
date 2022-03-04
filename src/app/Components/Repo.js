@@ -99,12 +99,12 @@ const Repo = ({
     setOpen(false);
     setSeriesType(value);
     setOpenId();
+    getContributorActivities();
     if (value === "additions" || value === "deletions") {
       await getAdditions();
     } else if (value === "commits") {
       await getCommitActivities();
     }
-    await getContributorActivities();
     setOpen(true);
   };
   const getAdditions = () => {
@@ -281,7 +281,7 @@ const Repo = ({
             >
               <Graph
                 type=""
-                titleText="Contributors Change"
+                titleText="Contributors Changes"
                 yAxisText="Number of contribution"
                 xCategories={
                   (contributorActivities &&

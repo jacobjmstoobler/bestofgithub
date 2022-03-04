@@ -4,10 +4,15 @@ import {
   getRepoDetailsSuccess,
   getRepoActivitiesSuccess,
   getRepoCommitActivitiesSuccess,
-  getRepoContributorActivitiesSuccess
+  getRepoContributorActivitiesSuccess,
 } from "./reposState";
-import { fetchRepos, fetchRepoDetails, fetchRepoActivities , fetchRepoCommitActivities,
-    fetchRepoContributorActivities } from "./reposApis";
+import {
+  fetchRepos,
+  fetchRepoDetails,
+  fetchRepoActivities,
+  fetchRepoCommitActivities,
+  fetchRepoContributorActivities,
+} from "./reposApis";
 
 function* workGetReposFetch(data) {
   const repos = yield call(() => fetchRepos(data.payload));
@@ -29,7 +34,6 @@ function* workGetRepoCommitActivities(data) {
   yield put(getRepoCommitActivitiesSuccess(repo));
 }
 
-
 function* workGetRepoContributorActivities(data) {
   const repo = yield call(() => fetchRepoContributorActivities(data.payload));
   yield put(getRepoContributorActivitiesSuccess(repo));
@@ -41,7 +45,10 @@ function* repoSaga() {
   yield takeEvery("repos/getRepoDetails", workGetfetchRepoDetails);
   yield takeEvery("repos/getRepoActivities", workGetfetchRepoActivities);
   yield takeEvery("repos/getRepoCommitActivities", workGetRepoCommitActivities);
-  yield takeEvery("repos/getRepoContributorActivities", workGetRepoContributorActivities);
+  yield takeEvery(
+    "repos/getRepoContributorActivities",
+    workGetRepoContributorActivities
+  );
 }
 
 export default repoSaga;

@@ -31,7 +31,7 @@ export default function RepoList({ repoData, fetchMore }) {
       hasMore={true}
       scrollableTarget="scrollableDiv"
     >
-      <div id="scrollableDiv" style={{"maxHeight":"600px","overflow":"auto", }}>
+      <div id="scrollableDiv" style={{"maxHeight":"500px","overflow":"auto", }}>
         {repos && repos.length
           ? repos.map((repo, index) => (
               <Repo

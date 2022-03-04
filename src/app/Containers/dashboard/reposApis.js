@@ -31,10 +31,10 @@ export function fetchRepoCommitActivities(payload) {
     .catch(catchHandler);
 }
 export function fetchRepoContributorActivities(payload) {
-    return api()
-      .get(
-        `${config.routes.repo}/${payload.owner}/${payload.repo}${config.routes.contributorActivity}`
-      )
-      .then((res) => res.data)
-      .catch(catchHandler);
+  return api()
+    .get(
+      `${config.routes.repo}/${payload.owner}/${payload.repo}${config.routes.contributorActivity}`
+    )
+    .then((res) => res.data)
+    .catch(catchHandler);
 }
